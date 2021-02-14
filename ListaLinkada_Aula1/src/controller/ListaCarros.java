@@ -21,6 +21,7 @@ public class ListaCarros {
         }else{
             carros.add(carro);
         }
+        
     }
     
     public void alterarCarro(int item, Carro carro) {
@@ -44,5 +45,17 @@ public class ListaCarros {
         for (int i = 0; i < carros.size(); i++){
             System.out.println(i + " - " + carros.get(i));
         }
+    }
+    
+    public int posicao(String nome){
+        int posicao = 0;
+        while (posicao < carros.size()){
+            Carro c = carros.get(posicao);
+            if (c.getPlaca().equals(nome))
+                return posicao;
+            else
+                posicao++;
+        }
+        return posicao;
     }
 }
