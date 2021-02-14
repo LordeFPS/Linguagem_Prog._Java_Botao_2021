@@ -59,18 +59,49 @@ public class Aula1 {
         */
         boolean continuar = true;
         while (continuar){
-            System.out.println("Digite uma marca");
-            String marca = leitor.next();
-            inserirLista(marca);
+            System.out.println("");
+            //System.out.println("Escolha uma opção");
+            int opcao = menuLista();
             
-            System.out.println("Deseja continuar? (S/N) ");
-            String opcao = leitor.next();
-            
-            continuar = opcao.toUpperCase().equals("S");
+            if (opcao == 1){
+                System.out.print("Digite uma marca: ");
+                String marca = leitor.next();
+                inserirLista(marca);
+            }else if (opcao == 2){
+                System.out.print("Informe a posição desejada: ");
+                int posicao = leitor.nextInt();
+                System.out.print("Informe uma marca: ");
+                String marcaAtt = leitor.next();
+                atualizarLista(posicao, marcaAtt);
+            }else if (opcao == 3){
+                System.out.print("Informe o nome para remover: ");
+                String remover = leitor.next();
+                removerLista(remover);
+            }else if (opcao == 4){
+                System.out.println("Lista criada ↓");
+                listarLista();
+            }else if (opcao == 5){
+                System.out.println("Saiu da Lista");
+                break;
+            }else {
+                System.out.println("Opção inválida!!");
+            }
+            continue;
         }
-        
-        listarLista();
     }
+    
+    public static int menuLista() {
+        System.out.println("___________________");
+        System.out.println("__ 1 - Inserir   __");
+        System.out.println("__ 2 - Atualizar __");
+        System.out.println("__ 3 - Remover   __");
+        System.out.println("__ 4 - Listar    __");
+        System.out.println("__ 5 - Sair      __");
+        System.out.println("___________________");
+        
+        return leitor.nextInt();
+    }
+    
     public static void inserirLista(String str) {
         /*
         1 - Criar um método para inserir dados na lista;
@@ -78,7 +109,8 @@ public class Aula1 {
             Não permitir registros duplicados na lista;
         2 - Criar um método para listar os registros inseridos;
         */
-        if (lista.contains(str)){//verificar se existe algo dentro da lista
+        if (lista.contains(str)){
+        //"contains" verifica se existe algo dentro da lista
         //if (lista.indexOf(str) >= 0){
             System.out.println("Este valor ja existe");  
         }else {
@@ -93,9 +125,21 @@ public class Aula1 {
             Não permitir registros duplicados na lista;
         2 - Criar um método para listar os registros inseridos;
         */
-        System.out.println("Lista ↓");
-        for (String listar : lista){
-            System.out.println(listar);
+        
+        for (int i = 0; i < lista.size(); i++){
+            
+            System.out.println(i + " - " + lista.get(i));
+             
         }
+    }
+    
+    public static void atualizarLista(int item, String valor) {
+        
+        lista.set(item, valor);
+    }
+    
+    public static void removerLista(String valor) {
+        
+        lista.remove(valor);
     }
 }
