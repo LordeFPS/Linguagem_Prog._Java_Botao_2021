@@ -86,7 +86,7 @@ public class Aula1 {
             }else {
                 System.out.println("Opção inválida!!");
             }
-            continue;
+            //continue;
         }
     }
     
