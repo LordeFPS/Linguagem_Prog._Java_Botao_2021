@@ -16,7 +16,11 @@ public class ListaCarros {
     LinkedList<Carro> carros = new LinkedList();
     
     public void inserirCarro(Carro carro){
-        carros.add(carro);
+        if (carros.contains(carro)){
+            System.out.println("Ja existe este Carro.");
+        }else{
+            carros.add(carro);
+        }
     }
     
     public void alterarCarro(int item, Carro carro) {
@@ -28,12 +32,17 @@ public class ListaCarros {
     }
     
     public void removerCarro(Carro carro) {
-        carros.remove(carro);
+        int ret = carros.indexOf(carro.getPlaca());
+        if (ret >= 0){
+            carros.remove(carro);
+        }else{
+            System.out.println("Não existe esta placa.");
+        }
     }
     
     public void listarCarro() {
-        for (Carro obj : carros){
-            System.out.println(obj.toString());
+        for (int i = 0; i < carros.size(); i++){
+            System.out.println(i + " - " + carros.get(i));
         }
     }
 }
