@@ -15,6 +15,8 @@ import modelo.Carro;
  */
 public class ListaLinkada {
     static Scanner leitor = new Scanner(System.in);
+    static ListaCarros lista = new ListaCarros();
+    
     /**
      * @param args the command line arguments
      */
@@ -23,9 +25,9 @@ public class ListaLinkada {
     }
     
     public static void carros() {
-        Carro carro = new Carro("abs-123", "AMG A45S", "Mercedes", 2021, "Preto");
+        Carro carro = new Carro("abc-1234", "Fiesta", "Ford", 2021, "Preto");
         
-        ListaCarros lista = new ListaCarros();
+        
         lista.inserirCarro(carro);
         
         lista.listarCarro();
@@ -37,50 +39,22 @@ public class ListaLinkada {
             int menu = menuLista();
             
             if (menu == 1){
-                System.out.print("Digite a placa: ");
-                String placa = leitor.next();
-                System.out.print("Digite o modelo: ");
-                String modelo = leitor.next();
-                System.out.print("Digite a marca: ");
-                String marca = leitor.next();
-                System.out.print("Digite o ano Fabricado: ");
-                int anoFabricado = leitor.nextInt();
-                System.out.print("Digite a cor: ");
-                String cor = leitor.next();
-                lista.inserirCarro(new Carro(placa, modelo, marca, 
-                                                anoFabricado, cor));   
+                inserir(); 
             }else if (menu == 2){
-                System.out.print("Digite a posição: ");
-                int posicao = leitor.nextInt();
-                System.out.print("Digite a placa: ");
-                String placa = leitor.next();
-                System.out.print("Digite o modelo: ");
-                String modelo = leitor.next();
-                System.out.print("Digite a marca: ");
-                String marca = leitor.next();
-                System.out.print("Digite o ano Fabricado: ");
-                int anoFabricado = leitor.nextInt();
-                System.out.print("Digite a cor: ");
-                String cor = leitor.next();
-                lista.alterarCarro(posicao, new Carro(placa, modelo, marca, 
-                                                anoFabricado, cor));
+                atualizar();
             }else if (menu == 3){
-                System.out.print("Digite a posicao para excluir: ");
-                int posicao = leitor.nextInt();
-                lista.removerItem(posicao);
+                removerItem();
             }else if (menu == 4){
-                
-                //System.out.print("Digite a placa: ");
-                //String placa = leitor.next();
-                //lista.removerCarro(placa);
-                
+                removerObj();               
             }else if (menu == 5){
-                System.out.println("Lista Criada ↓");
-                lista.listarCarro();
+                listar();
             }else if (menu == 6){
                 System.out.println("Saiu da lista.");
                 break;
             }
+            System.out.println("Deseja continuar? S-sim");
+            String opcao = leitor.next();
+            continuar = opcao.toUpperCase().equals("S");
         }
         
     }
@@ -96,6 +70,53 @@ public class ListaLinkada {
         System.out.println("_____________________");
         
         return leitor.nextInt();
+    }
+    
+    static void inserir(){
+        System.out.print("Digite a placa: ");
+        String placa = leitor.next();
+        System.out.print("Digite o modelo: ");
+        String modelo = leitor.next();
+        System.out.print("Digite a marca: ");
+        String marca = leitor.next();
+        System.out.print("Digite o ano Fabricado: ");
+        int anoFabricado = leitor.nextInt();
+        System.out.print("Digite a cor: ");
+        String cor = leitor.next();
+        lista.inserirCarro(new Carro(placa, modelo, marca, anoFabricado, cor));  
+    }
+    static void atualizar(){
+        //System.out.print("Digite a posição: ");
+        //int posicao = leitor.nextInt();
+        System.out.print("Digite a placa existente: ");
+        String placa = leitor.next();
+        System.out.print("Digite a placa nova: ");
+        String placaNova = leitor.next();
+        System.out.print("Digite o modelo: ");
+        String modelo = leitor.next();
+        System.out.print("Digite a marca: ");
+        String marca = leitor.next();
+        System.out.print("Digite o ano Fabricado: ");
+        int anoFabricado = leitor.nextInt();
+        System.out.print("Digite a cor: ");
+        String cor = leitor.next();
+        lista.alterarCarro(lista.posicao(placa), new Carro(placaNova, modelo, marca, 
+                                                anoFabricado, cor));
+    }
+    static void removerItem(){
+        System.out.print("Digite a posicao para excluir: ");
+        int posicao = leitor.nextInt();
+        lista.removerItem(posicao);
+        
+    }
+    static void removerObj(){
+        //System.out.print("Digite a placa: ");
+                //String placa = leitor.next();
+                //lista.removerCarro(placa);
+    }
+    static void listar(){
+        System.out.println("Lista Criada ↓");
+        lista.listarCarro();
     }
     
 }
