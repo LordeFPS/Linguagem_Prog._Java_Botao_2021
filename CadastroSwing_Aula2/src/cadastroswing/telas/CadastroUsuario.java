@@ -17,6 +17,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     public CadastroUsuario() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,8 +28,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jColorChooser1 = new javax.swing.JColorChooser();
         jDialog1 = new javax.swing.JDialog();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -36,6 +37,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jCMarcas = new javax.swing.JComboBox<>();
         jLMarcas = new javax.swing.JLabel();
         jLReceMarca = new javax.swing.JLabel();
+        jLHeader = new javax.swing.JLabel();
+        jCFiltrarPesquisa = new javax.swing.JCheckBox();
+        jLCheckBox = new javax.swing.JLabel();
+        jLGroupRadio = new javax.swing.JLabel();
+        jRMaculino = new javax.swing.JRadioButton();
+        jRFeminino = new javax.swing.JRadioButton();
+        jLResultadoFiltro = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -82,42 +90,107 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLMarcas.setText("Marcas");
+        jLMarcas.setText("Marcas ComboBox");
+
+        jLReceMarca.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLHeader.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLHeader.setText("Componentes ques usamos em formulário");
+
+        jCFiltrarPesquisa.setText("Pesquisar todos?");
+        jCFiltrarPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCFiltrarPesquisaActionPerformed(evt);
+            }
+        });
+
+        jLCheckBox.setText("CheckBox");
+
+        jLGroupRadio.setText("Radio Button");
+
+        buttonGroup1.add(jRMaculino);
+        jRMaculino.setText("Masculino");
+        jRMaculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRMaculinoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRFeminino);
+        jRFeminino.setText("Feminino");
+        jRFeminino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRFemininoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLMarcas)
-                    .addComponent(jTRecebeNome)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jTNome)
-                    .addComponent(jLReceMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCMarcas, 0, 150, Short.MAX_VALUE))
-                .addGap(164, 164, 164))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRFeminino)
+                    .addComponent(jLGroupRadio)
+                    .addComponent(jRMaculino)
+                    .addComponent(jLHeader)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTRecebeNome)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton1)
+                            .addComponent(jTNome))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLMarcas))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLReceMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLCheckBox)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jCFiltrarPesquisa)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLResultadoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jLHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLMarcas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTRecebeNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(jLMarcas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jLReceMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTRecebeNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLGroupRadio)
+                    .addComponent(jCFiltrarPesquisa)
+                    .addComponent(jLResultadoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLReceMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jRMaculino)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRFeminino)
+                .addGap(124, 124, 124))
         );
 
         pack();
@@ -139,6 +212,24 @@ public class CadastroUsuario extends javax.swing.JFrame {
         int selected = jCMarcas.getSelectedIndex();
         jLReceMarca.setText(jCMarcas.getItemAt(selected));
     }//GEN-LAST:event_jCMarcasActionPerformed
+
+    private void jCFiltrarPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCFiltrarPesquisaActionPerformed
+        if (jCFiltrarPesquisa.isSelected()){
+            jLResultadoFiltro.setText("Sim");
+        }else{
+            jLResultadoFiltro.setText("Não");
+        }
+    }//GEN-LAST:event_jCFiltrarPesquisaActionPerformed
+
+    private void jRMaculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMaculinoActionPerformed
+        if (jRMaculino.isSelected())
+            jLGroupRadio.setText((jRMaculino.getText()));
+    }//GEN-LAST:event_jRMaculinoActionPerformed
+
+    private void jRFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRFemininoActionPerformed
+        if (jRFeminino.isSelected())
+            jLGroupRadio.setText((jRFeminino.getText()));
+    }//GEN-LAST:event_jRFemininoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,13 +267,20 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCFiltrarPesquisa;
     private javax.swing.JComboBox<String> jCMarcas;
-    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLCheckBox;
+    private javax.swing.JLabel jLGroupRadio;
+    private javax.swing.JLabel jLHeader;
     private javax.swing.JLabel jLMarcas;
     private javax.swing.JLabel jLReceMarca;
+    private javax.swing.JLabel jLResultadoFiltro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRFeminino;
+    private javax.swing.JRadioButton jRMaculino;
     private javax.swing.JTextField jTNome;
     private javax.swing.JTextField jTRecebeNome;
     // End of variables declaration//GEN-END:variables
