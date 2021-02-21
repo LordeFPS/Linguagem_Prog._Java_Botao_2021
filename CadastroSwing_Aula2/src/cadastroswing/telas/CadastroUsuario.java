@@ -30,9 +30,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jColorChooser1 = new javax.swing.JColorChooser();
         jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        jtNome = new javax.swing.JTextField();
+        jTNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jtRecebeNome = new javax.swing.JTextField();
+        jTRecebeNome = new javax.swing.JTextField();
+        jCMarcas = new javax.swing.JComboBox<>();
+        jLMarcas = new javax.swing.JLabel();
+        jLReceMarca = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -51,7 +54,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jLabel1.setText("Informe um nome");
 
-        jtNome.setName(""); // NOI18N
+        jTNome.setName(""); // NOI18N
 
         jButton1.setText("Clique aqui");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -59,51 +62,83 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jtRecebeNome.setEditable(false);
-        jtRecebeNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtRecebeNomeActionPerformed(evt);
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
+
+        jTRecebeNome.setEditable(false);
+        jTRecebeNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTRecebeNomeActionPerformed(evt);
+            }
+        });
+
+        jCMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ford", "Fiat", "Toyota", "Volkswagen", "Mercedes", "Hyundai" }));
+        jCMarcas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCMarcasActionPerformed(evt);
+            }
+        });
+
+        jLMarcas.setText("Marcas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtRecebeNome)
+                    .addComponent(jLMarcas)
+                    .addComponent(jTRecebeNome)
                     .addComponent(jLabel1)
                     .addComponent(jButton1)
-                    .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                    .addComponent(jTNome)
+                    .addComponent(jLReceMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCMarcas, 0, 150, Short.MAX_VALUE))
+                .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtRecebeNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addComponent(jTRecebeNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLMarcas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLReceMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtRecebeNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtRecebeNomeActionPerformed
+    private void jTRecebeNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTRecebeNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtRecebeNomeActionPerformed
+    }//GEN-LAST:event_jTRecebeNomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jtRecebeNome.setText(jtNome.getText());
+        jTRecebeNome.setText(jTNome.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jCMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCMarcasActionPerformed
+        int selected = jCMarcas.getSelectedIndex();
+        jLReceMarca.setText(jCMarcas.getItemAt(selected));
+    }//GEN-LAST:event_jCMarcasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,10 +177,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jCMarcas;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLMarcas;
+    private javax.swing.JLabel jLReceMarca;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jtNome;
-    private javax.swing.JTextField jtRecebeNome;
+    private javax.swing.JTextField jTNome;
+    private javax.swing.JTextField jTRecebeNome;
     // End of variables declaration//GEN-END:variables
 }
