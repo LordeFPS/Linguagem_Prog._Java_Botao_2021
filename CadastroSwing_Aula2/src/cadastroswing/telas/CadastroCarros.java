@@ -47,9 +47,23 @@ public class CadastroCarros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Informe a placa");
             jTPlaca.requestFocus();
             return false;
+        }else if (jCMarca.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Informe a marca");
+            jCMarca.requestFocus();
+        }else if(jCMarca.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Informe o modelo");
+            jCModelo.requestFocus();
+        }else if(jTAnoFabricao.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Informe o ano de fabricação");
+            jTAnoFabricao.requestFocus();
         }
-        return true;
+            return true;
     }
+    private void limpaDados(){
+        DefaultTableModel dtm = (DefaultTableModel) jTableCarros.getModel();
+        dtm.setNumRows(0);
+    }
+    
     public CadastroCarros() {
         initComponents();
     }
@@ -264,6 +278,11 @@ public class CadastroCarros extends javax.swing.JFrame {
             c.setAnoFabricacao(Integer.parseInt(jTAnoFabricao.getText()));
             listaCarros.adiciona(c);
         }
+        jTPlaca.setText("");
+        jTAnoFabricao.setText("");
+        jCMarca.setSelectedIndex(-1);
+        jCModelo.setSelectedIndex(-1);
+        jTPlaca.requestFocus();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -285,7 +304,12 @@ public class CadastroCarros extends javax.swing.JFrame {
                                     carro.getModelo(),
                                     carro.getAnoFabricacao()
                                     });
-        }jTableCarros.removeAll();
+        }
+        jTPlaca.setText("");
+        jTAnoFabricao.setText("");
+        jCMarca.setSelectedIndex(-1);
+        jCModelo.setSelectedIndex(-1);
+        jTPlaca.requestFocus();
         
     }//GEN-LAST:event_jBListarTodosActionPerformed
 
@@ -334,8 +358,7 @@ public class CadastroCarros extends javax.swing.JFrame {
     }//GEN-LAST:event_jCMarcaItemStateChanged
 
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel) jTableCarros.getModel();
-        dtm.setNumRows(0);
+        limpaDados();
     }//GEN-LAST:event_jBInserirActionPerformed
 
     /**
