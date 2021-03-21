@@ -18,7 +18,7 @@ public class CadastroContato extends javax.swing.JFrame {
     /**
      * Creates new form CadastroContato
      */
-    ControllerGeral controller = new ControllerGeral();
+    //ControllerGeral controller = new ControllerGeral();
     
     public CadastroContato() {
         initComponents();
@@ -67,8 +67,6 @@ public class CadastroContato extends javax.swing.JFrame {
         jBcadastroCancelar = new javax.swing.JButton();
         jFTFFone = new javax.swing.JFormattedTextField();
         jTFEmail = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Nome");
 
@@ -160,7 +158,7 @@ public class CadastroContato extends javax.swing.JFrame {
         Contato ct = new Contato(nome, email, fone);
         
         //ControllerGeral controller = new ControllerGeral();
-        controller.contatos.add(ct);
+        ControllerGeral.contatos.add(ct);
         //controller.listarContatos();
         
         //System.out.println(ct.toString());
@@ -173,7 +171,7 @@ public class CadastroContato extends javax.swing.JFrame {
 
     private void jBcadastroCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcadastroCancelarActionPerformed
         // TODO add your handling code here:
-        controller.listarContatos();
+        
         
     }//GEN-LAST:event_jBcadastroCancelarActionPerformed
 

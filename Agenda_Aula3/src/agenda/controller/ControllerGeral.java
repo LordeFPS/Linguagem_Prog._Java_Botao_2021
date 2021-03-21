@@ -5,6 +5,7 @@
  */
 package agenda.controller;
 
+import agenda.modelo.Compromisso;
 import agenda.modelo.Contato;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,17 @@ import java.util.List;
  * @author 69146
  */
 public class ControllerGeral {
-    public List<Contato> contatos = new ArrayList<>();
+    public static List<Contato> contatos = new ArrayList<>();
+    public static List<Compromisso> comprimissos = new ArrayList<>();
     
-    public void listarContatos(){
+    public static void listarContatos(){
         for(Contato ct : contatos){
             System.out.println(ct.toString());
         }
     }
-    
+    public static void listarCompromissos(){
+        for(Compromisso ct : comprimissos){
+            System.out.println(ct.toString());
+        }
+    }
 }

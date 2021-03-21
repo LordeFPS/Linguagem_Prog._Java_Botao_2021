@@ -5,21 +5,24 @@
  */
 package agenda.modelo;
 
+import java.sql.Date;
+import java.sql.Time;
+
 /**
  *
  * @author 69146
  */
 public class Compromisso {
-    private String contato;
-    private String data;
-    private String hora;
+    private Contato contato;
+    private Date data;
+    private Time hora;
     private String local;
     private String observacao;
-
-    public Compromisso() {
+    
+    public Compromisso() {    
     }
 
-    public Compromisso(String contato, String data, String hora, String local, String observacao) {
+    public Compromisso(Contato contato, Date data, Time hora, String local, String observacao) {
         this.contato = contato;
         this.data = data;
         this.hora = hora;
@@ -35,27 +38,27 @@ public class Compromisso {
         this.observacao = observacao;
     }
 
-    public String getContato() {
+    public Contato getContato() {
         return contato;
     }
 
-    public void setContato(String contato) {
+    public void setContato(Contato contato) {
         this.contato = contato;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
-    public String getHora() {
+    public Time getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(Time hora) {
         this.hora = hora;
     }
 
