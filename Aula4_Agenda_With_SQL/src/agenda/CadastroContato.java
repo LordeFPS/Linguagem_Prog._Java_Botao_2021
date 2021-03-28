@@ -167,6 +167,11 @@ public class CadastroContato extends javax.swing.JFrame {
         if (validade == true){
             limpar();
         }
+        if (ct.salvar()){
+            limpar();
+        }else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar contato");
+        }
     }//GEN-LAST:event_jBcadastroSalvarActionPerformed
 
     private void jBcadastroCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcadastroCancelarActionPerformed
