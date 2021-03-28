@@ -7,6 +7,10 @@ package agenda.modelo;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import utils.ConexaoDB;
 
 /**
  *
@@ -73,6 +77,29 @@ public class Compromisso {
     @Override
     public String toString() {
         return "Compromisso{" + "contato=" + contato + ", data=" + data + ", hora=" + hora + ", local=" + local + ", observacao=" + observacao + '}';
+    }
+    
+    public boolean salvar(){
+        try {
+        //conectar ao banco
+            Connection  con = ConexaoDB.getConexao();
+            //montar sql
+            String sql = "insert into compromisso (contatoid, datacp, hora, localcp, observacao)" +
+                         "values (?,?,?,?,?)";
+
+            //envia sql para o banco de dados
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, this.contato.getContatoid());
+            stm.setDate(2, this.data);
+            stm.setTime(3, this.hora);
+            stm.setString(4, this.local);
+            stm.setString(5, this.observacao);
+            stm.execute();
+        } catch (SQLException ex){
+            System.out.println("Erro: " + ex.getMessage());
+            return false;
+        }
+        return true;
     }
     
 }

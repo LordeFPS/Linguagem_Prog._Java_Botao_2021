@@ -6,12 +6,16 @@
 package agenda.modelo;
 
 import utils.ConexaoDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
  * @author 69146
  */
 public class Contato {
+    private int contatoid;
     private String nome;
     private String email;
     private String fone;
@@ -48,6 +52,14 @@ public class Contato {
     public void setFone(String fone) {
         this.fone = fone;
     }
+    
+     public int getContatoid() {
+        return contatoid;
+    }
+
+    public void setContatoid(int contatoid) {
+        this.contatoid = contatoid;
+    }
 
     @Override
     public String toString() {
@@ -55,12 +67,23 @@ public class Contato {
     }
     
     public boolean salvar(){
+        try {
         //conectar ao banco
-        System.out.println(ConexaoDB.getConexao());
-        //montar sql
-        
-        //envia sql para o banco de dados
+            Connection  con = ConexaoDB.getConexao();
+            //montar sql
+            String sql = "insert into contato (nome, fone, email)" +
+                        "values (?,?,?)";
+            //envia sql para o banco de dados
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, this.nome);
+            stm.setString(2, this.fone);
+            stm.setString(3, this.email);
+            stm.execute();
+        } catch (SQLException ex){
+            System.out.println("Erro: " + ex.getMessage());
+            return false;
+        }
         return true;
     }
-    
+
 }
