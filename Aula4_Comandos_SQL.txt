@@ -76,10 +76,13 @@ values (?,?,?)
 create table compromisso(
     codcompromisso serial primary key,
     contatoID   int,
-    data date,
+    datacp date,
     hora time,
-    local varchar(50),
+    localcp varchar(50),
     observacao varchar(100),
     foreign key(contatoid) references contato(codcontato) 
 );
 
+/* Cria um insert com parametros sem valores para que possa ser posto atraves de codigo*/
+insert into compromisso (contatoid, datacp, hora, localcp, observacao)
+values (?,?,?,?,?);
