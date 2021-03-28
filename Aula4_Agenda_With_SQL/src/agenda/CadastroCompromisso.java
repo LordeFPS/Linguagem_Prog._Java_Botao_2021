@@ -241,7 +241,14 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         cp.setLocal(jTFLocal.getText());
         cp.setObservacao(jTAObservacao.getText());
         
-        System.out.println(cp.toString());
+        //System.out.println(cp.toString());
+        
+        if (cp.salvar()){
+            limpar();
+        }else {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar compromisso");
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -250,8 +257,7 @@ public class CadastroCompromisso extends javax.swing.JFrame {
             if(ct.getNome().equals(nome))
                 return ct;
         }
-        
-            return null;
+        return null;
     }
     
     private void jFTFDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFTFDataActionPerformed
