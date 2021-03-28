@@ -5,6 +5,8 @@
  */
 package agenda.modelo;
 
+import utils.ConexaoDB;
+
 /**
  *
  * @author 69146
@@ -52,6 +54,13 @@ public class Contato {
         return "Contato{" + "nome=" + nome + ", email=" + email + ", fone=" + fone + '}';
     }
     
-    
+    public boolean salvar(){
+        //conectar ao banco
+        System.out.println(ConexaoDB.getConexao());
+        //montar sql
+        
+        //envia sql para o banco de dados
+        return true;
+    }
     
 }
