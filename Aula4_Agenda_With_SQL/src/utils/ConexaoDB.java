@@ -19,7 +19,7 @@ public class ConexaoDB {
         String user = "postgres";
         String password = "123";
         try {
-            Class.forName("org.postgressql.Driver");
+            Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Erro ao conectar com o banco");
