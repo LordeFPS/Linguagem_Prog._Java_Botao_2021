@@ -60,5 +60,26 @@ alter table venda
 add constraint fk_cliente foreign key(clienteid)
 references cliente(codcliente);
 
+/*Cria a tabela contato*/
+create table contato(
+    codcontato serial primary key,
+    nome varchar(40),
+    fone varchar(16),
+    email varchar(50)
+);
 
+/* Cria um insert com parametros sem valores para que possa ser posto atraves de codigo*/
+insert into contato (nome, fone, email)
+values (?,?,?)
+
+/*Cria a tabela compromisso que tem vinculo com contato*/
+create table compromisso(
+    codcompromisso serial primary key,
+    contatoID   int,
+    data date,
+    hora time,
+    local varchar(50),
+    observacao varchar(100),
+    foreign key(contatoid) references contato(codcontato) 
+);
 
