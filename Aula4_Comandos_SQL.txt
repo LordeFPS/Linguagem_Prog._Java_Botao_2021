@@ -1,0 +1,64 @@
+/*Cria uma tabela chamada cliente com seus respectivos campos
+create table cliente(
+    codCliente int,
+    nome       varchar(40),
+    fone       varchar(15),
+    email      varchar(50)
+);*/
+/*Criar chave primária*/
+alter table cliente
+add primary key(codcliente);
+
+/*Insere informações na tabela*/
+insert into cliente (codcliente,nome, fone, email)
+values (11,'gabriel', '97845164','gabrielgmail.com');
+
+/*Altera alguma informação da tabela*/
+update cliente 
+set email = 'gabriel@gmail.com';
+
+/*Deleta as informações da tabela*/
+delete from cliente where codcliente = 10;
+
+/*Mostra a tabela cliente*/
+select * from cliente;
+
+/*Exclui a coluna nome*/
+alter table cliente
+drop column codcliente,
+drop column nome,
+drop column fone,
+drop column email;
+
+/*Adiciona uma coluna e ela não pode ter um valor nulo*/
+alter table cliente
+add column codvenda serial primary key,
+add column nome varchar(40) not null,
+add column fone varchar(15) not null,
+add column email varchar(50) not null;
+
+/* Cria a tabela de venda
+create table venda (
+    codvenda serial primary key,
+    data            date,
+    clienteID       int,
+    status          char
+);*/
+ou 
+/*Cria uma tabela com foreign(chave estrangeira)*/
+create table venda (
+    codvenda serial primary key,
+    data            date,
+    clienteID       int,
+    status          char,
+    foreign key(clienteid) references cliente(codcliente)
+    
+);
+
+/*Cria uma chave estrangeira para as duas tabelas terem um vinculo*/
+alter table venda
+add constraint fk_cliente foreign key(clienteid)
+references cliente(codcliente);
+
+
+
