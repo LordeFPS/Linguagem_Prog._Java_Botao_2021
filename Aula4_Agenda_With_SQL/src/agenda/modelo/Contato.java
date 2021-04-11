@@ -110,6 +110,24 @@ public class Contato {
         return rs;
     }
     
+     public ResultSet getAll(String filter){
+        
+        ResultSet rs = null;
+        
+        try {
+            String sql = "select * from contato " +
+                         "where nome like lower('%"+ filter +"%')";
+            Connection  con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            
+            rs = stm.executeQuery();
+        } catch (SQLException ex) {
+            //Logger.getLogger(Contato.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        return rs;
+    }
+    
     public static Contato getById(int id){
         Contato contato = null;
         try { 
