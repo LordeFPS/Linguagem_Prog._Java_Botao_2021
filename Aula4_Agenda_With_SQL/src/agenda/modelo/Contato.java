@@ -9,6 +9,9 @@ import utils.ConexaoDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -68,7 +71,7 @@ public class Contato {
     
     public boolean salvar(){
         try {
-        //conectar ao banco
+            //conectar ao banco
             Connection  con = ConexaoDB.getConexao();
             //montar sql
             String sql = "insert into contato (nome, fone, email)" +
@@ -84,6 +87,22 @@ public class Contato {
             return false;
         }
         return true;
+    }
+    
+    public ResultSet getAll(){
+        
+        ResultSet rs = null;
+        
+        try {
+            String sql = "select codcontato, nome from contato";
+            Connection  con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+        } catch (SQLException ex) {
+            //Logger.getLogger(Contato.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        return rs;
     }
 
 }
