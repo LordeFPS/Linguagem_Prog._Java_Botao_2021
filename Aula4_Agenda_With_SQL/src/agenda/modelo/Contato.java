@@ -26,6 +26,11 @@ public class Contato {
     public Contato() {
     }
 
+    public Contato(int contatoid, String nome) {
+        this.contatoid = contatoid;
+        this.nome = nome;
+    }
+    
     public Contato(String nome, String email, String fone) {
         this.nome = nome;
         this.email = email;
@@ -103,6 +108,29 @@ public class Contato {
             System.out.println("Erro: " + ex.getMessage());
         }
         return rs;
+    }
+    
+    public static Contato getById(int id){
+        Contato contato = null;
+        try { 
+            String sql = "select * from contato " +
+                    "where codcontato = ? ";
+            Connection  con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()){
+                contato = new Contato();
+                contato.setContatoid(rs.getInt("codcontato"));
+                contato.setNome(rs.getString("nome"));
+                contato.setFone(rs.getString("fone"));
+                contato.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Contato.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return contato;
     }
 
 }
