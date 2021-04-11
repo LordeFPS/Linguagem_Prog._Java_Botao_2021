@@ -18,15 +18,15 @@ import utils.ConexaoDB;
  */
 public class Compromisso {
     private Contato contato;
-    private Date data;
-    private Time hora;
+    private String data;
+    private String hora;
     private String local;
     private String observacao;
     
     public Compromisso() {    
     }
 
-    public Compromisso(Contato contato, Date data, Time hora, String local, String observacao) {
+    public Compromisso(Contato contato, String data, String hora, String local, String observacao) {
         this.contato = contato;
         this.data = data;
         this.hora = hora;
@@ -50,19 +50,19 @@ public class Compromisso {
         this.contato = contato;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -90,11 +90,11 @@ public class Compromisso {
             //envia sql para o banco de dados
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, this.contato.getContatoid());
-            stm.setDate(2, this.data);
-            stm.setTime(3, this.hora);
+            stm.setString(2, this.data);
+            stm.setString(3, this.hora);
             stm.setString(4, this.local);
             stm.setString(5, this.observacao);
-            stm.execute();
+            stm.execute();// Execute manda as informalções para o banco
         } catch (SQLException ex){
             System.out.println("Erro: " + ex.getMessage());
             return false;
