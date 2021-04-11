@@ -89,4 +89,7 @@ insert into compromisso (contatoid, datacp, hora, localcp, observacao)
 values (?,?,?,?,?);
 
 ********* AULA 5 *********
+/*Cria uma foreign key */
+alter table compromisso add foreign key (contatoid)
+references contato(codcontato);
 

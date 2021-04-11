@@ -166,11 +166,11 @@ public class CadastroContato extends javax.swing.JFrame {
         boolean validade = validaEmpty();
         if (validade == true){
             limpar();
-        }
-        if (ct.salvar()){
-            limpar();
-        }else {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar contato");
+            if (ct.salvar()){
+                limpar();
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Erro ao salvar contato");
+            }
         }
     }//GEN-LAST:event_jBcadastroSalvarActionPerformed
 

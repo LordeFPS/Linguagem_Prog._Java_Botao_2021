@@ -31,12 +31,8 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         initComponents();
     }
     
-    private boolean validaEmpy(){
-        if (jCBcontato.getName().equals("") || jCBcontato.getName().startsWith(" ")){
-            JOptionPane.showMessageDialog(rootPane, "Contato não informado");
-            jCBcontato.requestFocus();
-            return false;
-        }else if (jFTFData.getText().equals("") || jFTFData.getText().startsWith(" ")){
+    private boolean validaEmpty(){
+        if (jFTFData.getText().equals("") || jFTFData.getText().startsWith(" ")){
             JOptionPane.showMessageDialog(rootPane, "Data não informado");
             jFTFData.requestFocus();
             return false;
@@ -64,7 +60,7 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         jFTFHora.setText("");
         jTFLocal.setText("");
         jTAObservacao.setText("");
-        jCBcontato.requestFocus();
+        //jFTFData.requestFocus();
     }
     
     /**
@@ -236,22 +232,32 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         }*/
         //Inicio com Combo Box e integracao com a telade contato ↓
         Compromisso cp = new Compromisso();
-        System.out.println();
-        Contato contato = buscarContato(jCBcontato.getSelectedItem().toString());
+        //System.out.println();
+        //Index retorna a posição do -
+        int index = jCBcontato.getSelectedItem().toString().indexOf(" - ");
+        //codContato le até a posição do traço e copia ate uma posição antes do traço
+        String codContato = jCBcontato.getSelectedItem().toString().substring(0,index);
+                
+        //Contato contato = new Contato(16, "joao");
+        Contato contato = Contato.getById(Integer.parseInt(codContato));
         cp.setContato(contato);
-        //cp.setData(Date.valueOf(jFTFData.getText()));
-        //cp.setHora(Time.valueOf(jFTFHora.getText()));
+        cp.setData(jFTFData.getText());
+        cp.setHora(jFTFHora.getText());
         cp.setLocal(jTFLocal.getText());
         cp.setObservacao(jTAObservacao.getText());
         
         //System.out.println(cp.toString());
         
-        if (cp.salvar()){
-            limpar();
-        }else {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar compromisso");
+        boolean validade = validaEmpty();
+        if (validade == true){
+            //limpar();
+            if (cp.salvar()){
+                //JOptionPane.showMessageDialog(rootPane, "Compromisso Cadastrado");
+                limpar();
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Erro ao salvar compromisso");
+            }
         }
-        
         
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -289,7 +295,7 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         
         try {
             while(rs.next()){
-                jCBcontato.addItem(rs.getString("nome"));
+                jCBcontato.addItem(rs.getString("codcontato") + " - " + rs.getString("nome"));
             }
         } catch (SQLException ex) {
             //Logger.getLogger(CadastroCompromisso.class.getName()).log(Level.SEVERE, null, ex);
