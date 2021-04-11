@@ -8,9 +8,12 @@ package agenda;
 import agenda.controller.ControllerGeral;
 import agenda.modelo.Compromisso;
 import agenda.modelo.Contato;
-import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -276,9 +279,20 @@ public class CadastroCompromisso extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        List<Contato> contatos = ControllerGeral.contatos;
+        /*List<Contato> contatos = ControllerGeral.contatos;
         for (Contato ct : contatos){
             jCBcontato.addItem(ct.getNome());
+        }*/
+        
+        Contato contato = new Contato();
+        ResultSet rs = contato.getAll();
+        
+        try {
+            while(rs.next()){
+                jCBcontato.addItem(rs.getString("nome"));
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(CadastroCompromisso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
 
