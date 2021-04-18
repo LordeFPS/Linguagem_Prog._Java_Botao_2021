@@ -110,7 +110,7 @@ public class Compromisso {
             String sql = " select c.nome,cp.datacp,cp.hora," +
                          " cp.localcp,cp.observacao" +
                          " from contato c,compromisso cp" +
-                         " where c.codcontato = cp.contatoid";
+                         " where c.codcontato = cp.contatoid ";
             Connection con = ConexaoDB.getConexao();
             PreparedStatement stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
@@ -129,7 +129,7 @@ public class Compromisso {
                          " cp.localcp,cp.observacao" +
                          " from contato c,compromisso cp" +
                          " where c.codcontato = cp.contatoid"+
-                         " and lower(nome) like lower('%"+ filter +"%');";
+                         " and lower(nome) like lower('%"+ filter +"%'); ";
             Connection con = ConexaoDB.getConexao();
             PreparedStatement stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
@@ -145,7 +145,7 @@ public class Compromisso {
             String sql = " select c.nome, cp.datacp, cp.hora," +
                          " cp.localcp, cp.observacao" +
                          " from contato c, compromisso cp" +
-                         " where c.codcontato = cp.contatoid" +
+                         " where c.codcontato = cp.contatoid " +
                          " and datacp between ? and ?";
             Connection con = ConexaoDB.getConexao();
             PreparedStatement stm = con.prepareStatement(sql);

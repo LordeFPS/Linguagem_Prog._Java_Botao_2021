@@ -37,8 +37,8 @@ public class ConsultaCompromisso extends javax.swing.JFrame {
     }
     
     public void ativaLocal(boolean ativa){
-        jTFLocal.setVisible(ativa);
-        jLLocal.setVisible(ativa);
+        jTFLocal.setVisible(ativa); 
+        jLLocal.setVisible(ativa); 
     }
     public void ativaContato(boolean ativa){
         jTFContato.setVisible(ativa);
@@ -47,9 +47,9 @@ public class ConsultaCompromisso extends javax.swing.JFrame {
     
     public ConsultaCompromisso() {
         initComponents();
-        ativaInformeData(false);
+        ativaInformeData(false); 
         ativaHora(false);
-        ativaLocal(false);
+        ativaLocal(false); 
         ativaContato(false);
     }
     /**
