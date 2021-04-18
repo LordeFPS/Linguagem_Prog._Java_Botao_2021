@@ -116,7 +116,7 @@ public class Contato {
         
         try {
             String sql = "select * from contato " +
-                         "where nome like lower('%"+ filter +"%')";
+                         "where lower(nome) like lower('%"+ filter +"%')";
             Connection  con = ConexaoDB.getConexao();
             PreparedStatement stm = con.prepareStatement(sql);
             
