@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import utils.ConexaoDB;
+import java.sql.ResultSet;
 
 /**
  *
@@ -100,6 +101,98 @@ public class Compromisso {
             return false;
         }
         return true;
+    }
+    
+    public ResultSet getAll(){
+        ResultSet rs = null;
+
+        try {
+            String sql = " select c.nome,cp.datacp,cp.hora," +
+                         " cp.localcp,cp.observacao" +
+                         " from contato c,compromisso cp" +
+                         " where c.codcontato = cp.contatoid";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
+        
+    }
+    
+    public ResultSet getFilterContato(String filter){
+        ResultSet rs = null;
+        try {
+            String sql = " select c.nome,cp.datacp,cp.hora," +
+                         " cp.localcp,cp.observacao" +
+                         " from contato c,compromisso cp" +
+                         " where c.codcontato = cp.contatoid"+
+                         " and lower(nome) like lower('%"+ filter +"%');";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } 
+        return rs;
+    }   
+    public ResultSet getFilterData(String dataInicio, String dataFim){
+        ResultSet rs = null;
+        try {
+            String sql = " select c.nome, cp.datacp, cp.hora," +
+                         " cp.localcp, cp.observacao" +
+                         " from contato c, compromisso cp" +
+                         " where c.codcontato = cp.contatoid" +
+                         " and datacp between ? and ?";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, dataInicio);
+            stm.setString(2, dataFim);
+            rs = stm.executeQuery();            
+        } catch (SQLException ex) {
+           throw new RuntimeException(ex.getMessage());
+        }
+        return rs;
+    
+    }
+    public ResultSet getFilterLocal(String filter){
+        ResultSet rs = null;
+        try {
+            String sql = " select c.nome,cp.datacp,cp.hora," +
+                         " cp.localcp,cp.observacao" +
+                         " from contato c,compromisso cp" +
+                         " where c.codcontato = cp.contatoid"+
+                         " and lower(localcp) like lower('%"+ filter +"%');";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
+    }
+    public ResultSet getFilterHora(String horaInicio, String horaFim){
+        ResultSet rs = null;
+        try {
+            String sql = " select c.nome,cp.datacp,cp.hora," +
+                         " cp.localcp,cp.observacao" +
+                         " from contato c,compromisso cp" +
+                         " where c.codcontato = cp.contatoid"+
+                         " and cp.hora between ? and ?;";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, horaInicio);
+            stm.setString(2, horaFim);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
     }
     
 }

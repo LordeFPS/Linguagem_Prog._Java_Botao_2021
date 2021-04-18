@@ -48,10 +48,10 @@ public class CadastroCompromisso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Observação não informado");
             jTAObservacao.requestFocus();
             return false;
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Compromisso inserido com sucesso");
+        }//else{
+            //JOptionPane.showMessageDialog(rootPane, "Compromisso inserido com sucesso");
             return true;
-        }
+      //  }
     }
     
     private void limpar(){
@@ -249,10 +249,10 @@ public class CadastroCompromisso extends javax.swing.JFrame {
         //System.out.println(cp.toString());
         
         boolean validade = validaEmpty();
-        if (validade == true){
+        if (validade == true) {
             //limpar();
             if (cp.salvar()){
-                //JOptionPane.showMessageDialog(rootPane, "Compromisso Cadastrado");
+                JOptionPane.showMessageDialog(rootPane, "Compromisso Cadastrado");
                 limpar();
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao salvar compromisso");
