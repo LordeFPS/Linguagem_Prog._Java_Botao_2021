@@ -61,6 +61,7 @@ alter table venda
 add constraint fk_cliente foreign key(clienteid)
 references cliente(codcliente);
 
+----- Projeto Agenda ------
 /*Cria a tabela contato*/
 create table contato(
     codcontato serial primary key,
@@ -92,4 +93,7 @@ values (?,?,?,?,?);
 /*Cria uma foreign key */
 alter table compromisso add foreign key (contatoid)
 references contato(codcontato);
+
+********* AULA 6 *********
+
 
