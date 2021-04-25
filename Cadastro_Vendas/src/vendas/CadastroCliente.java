@@ -5,6 +5,7 @@
  */
 package vendas;
 
+import DAO.ClienteDAO;
 import javax.swing.JOptionPane;
 import vendas.modelo.Cliente;
 
@@ -80,6 +81,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFTFFone.setToolTipText("");
         jFTFFone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFTFFoneActionPerformed(evt);
@@ -188,9 +190,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         
         boolean validade = validaEmpty();
         if (validade == true) {
-            JOptionPane.showMessageDialog(rootPane, "Contato inserido com sucesso");
+            JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso");
             limpar();
-            if (cliente.salvar()){
+            if (ClienteDAO.salvar(cliente)){
                 limpar();
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao salvar Cliente");
