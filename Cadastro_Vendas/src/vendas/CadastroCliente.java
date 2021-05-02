@@ -5,7 +5,7 @@
  */
 package vendas;
 
-import DAO.ClienteDAO;
+import DAO.DaoCliente;
 import javax.swing.JOptionPane;
 import vendas.modelo.Cliente;
 
@@ -192,7 +192,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         if (validade == true) {
             JOptionPane.showMessageDialog(rootPane, "Cliente inserido com sucesso");
             limpar();
-            if (ClienteDAO.salvar(cliente)){
+            if (DaoCliente.salvar(cliente)){
                 limpar();
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao salvar Cliente");
