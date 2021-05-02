@@ -108,8 +108,22 @@ public class Venda implements DaoInterface{
     }
 
     @Override
-    public ResultSet getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ResultSet getAll(String filtro) {
+        ResultSet rs = null;
+
+        try {
+            String sql = " select * from venda v, cliente c" +
+                         " where v.idcliente = c.idcliente"+
+                         " and lower(nome) like lower('%"+ filtro +"%');";
+                         
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
     }
 
     @Override
