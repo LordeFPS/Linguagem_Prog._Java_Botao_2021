@@ -7,6 +7,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import utils.ConexaoDB;
 import vendas.modelo.Cliente;
@@ -15,7 +16,7 @@ import vendas.modelo.Cliente;
  *
  * @author 69146
  */
-public class ClienteDAO{
+public class DaoCliente{
     public static boolean salvar(Cliente clt) {
         try {
             //conectar ao banco
@@ -35,6 +36,22 @@ public class ClienteDAO{
             //return false;
         }
         return true;
+    }
+    public ResultSet getAll(){
+        ResultSet rs = null;
+
+        try {
+            String sql = " select idcliente, nome" +
+                         " from cliente;";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
+        
     }
     
 }
