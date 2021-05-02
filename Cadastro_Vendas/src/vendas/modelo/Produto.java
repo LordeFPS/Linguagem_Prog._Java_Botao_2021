@@ -5,10 +5,7 @@
  */
 package vendas.modelo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import utils.ConexaoDB;
+
 
 /**
  *
@@ -19,7 +16,10 @@ public class Produto {
     private String descricao;
     private float preco;
     private float estoque;
-
+    
+    public Produto() {
+    }
+    
     public Produto(String descricao, float preco, float estoque) {
         this.descricao = descricao;
         this.preco = preco;
@@ -65,24 +65,5 @@ public class Produto {
         this.estoque = estoque;
     }
     
-    public boolean salvar() {
-        try {
-            //conectar ao banco
-            Connection  con = ConexaoDB.getConexao();
-            //montar sql
-            String sql = " insert into produto (descricao, preco, estoque)" +
-                         " values (?,?,?);";
-            //envia sql para o banco de dados
-            PreparedStatement stm = con.prepareStatement(sql);
-            stm.setString(1, this.descricao);
-            stm.setFloat(2, this.preco);
-            stm.setFloat(3, this.estoque);
-            stm.execute();
-        } catch (SQLException ex){
-            throw new RuntimeException("Erro cadastro produto: " + ex.getMessage());
-            //System.out.println("Erro: " + ex.getMessage());
-            //return false;
-        }
-        return true;
-    }
+    
 }
