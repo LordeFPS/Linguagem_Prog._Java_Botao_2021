@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConexaoDB {
     public static Connection getConexao(){
         Connection con = null;
-        String url = "jdbc:postgresql://localhost:5432/vendas";
+        String url = "jdbc:postgresql://localhost:5432/venda";
         String user = "postgres";
         String password = "admin";
         try {
