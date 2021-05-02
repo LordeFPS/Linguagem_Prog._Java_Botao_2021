@@ -5,6 +5,8 @@
  */
 package vendas;
 
+import java.awt.Frame;
+
 /**
  *
  * @author 69146
@@ -88,7 +90,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        CadastroVenda tela = new CadastroVenda();
+        tela.setVisible(true);
+        tela.setExtendedState(Frame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
