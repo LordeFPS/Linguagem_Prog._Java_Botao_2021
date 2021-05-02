@@ -5,6 +5,7 @@
  */
 package vendas;
 
+import DAO.DaoProduto;
 import javax.swing.JOptionPane;
 import vendas.modelo.Produto;
 
@@ -189,7 +190,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         if (validade == true){
             JOptionPane.showMessageDialog(rootPane, "Produto inserido com sucesso");
             limpar();
-            if (produto.salvar()){
+            if (DaoProduto.salvar(produto)){
                 limpar();
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Erro ao cadastro produto");
