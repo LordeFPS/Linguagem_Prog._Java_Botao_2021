@@ -45,3 +45,5 @@ hs_err_pid*
 /Aula2_CadastroSwing/build/
 /JPA/nbproject/private/
 /JPA/build/
+/JpaDB-classes/nbproject/private/
+/JpaDB-classes/build/
