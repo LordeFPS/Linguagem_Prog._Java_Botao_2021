@@ -91,7 +91,14 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return "jpadb.classes.Categoria[ idcategoria=" + idcategoria + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Categoria{idcategoria=").append(idcategoria);
+        sb.append(", descricao=").append(descricao);
+        sb.append(", produtoCollection=").append(produtoCollection);
+        sb.append('}');
+        return sb.toString();
     }
+
+    
     
 }

@@ -18,6 +18,8 @@ public class JpaDBClasses {
         for(Produto p : DAO.getAllProdutos()){
            System.out.println(p.toString());
        }
+       for (Categoria c : DAO.getAllCategories()){
+           System.out.println(c.toString());
+       }
     }
-    
 }

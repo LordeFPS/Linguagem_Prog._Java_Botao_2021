@@ -95,7 +95,13 @@ public class Venda implements Serializable {
 
     @Override
     public String toString() {
-        return "jpadb.classes.Venda[ idvenda=" + idvenda + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Venda{idvenda=").append(idvenda);
+        sb.append(", datavenda=").append(datavenda);
+        sb.append(", itensCollection=").append(itensCollection);
+        sb.append('}');
+        return sb.toString();
     }
+
     
 }

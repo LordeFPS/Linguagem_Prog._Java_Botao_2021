@@ -115,7 +115,16 @@ public class Itens implements Serializable {
 
     @Override
     public String toString() {
-        return "jpadb.classes.Itens[ id=" + id + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Itens{id=").append(id);
+        sb.append(", preco=").append(preco);
+        sb.append(", quantidade=").append(quantidade);
+        sb.append(", idproduto=").append(idproduto);
+        sb.append(", idvenda=").append(idvenda);
+        sb.append('}');
+        return sb.toString();
     }
+
+    
     
 }

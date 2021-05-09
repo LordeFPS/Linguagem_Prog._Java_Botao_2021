@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -37,6 +38,13 @@ public class DAO {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Produto> tp = em.createQuery("SELECT p FROM Produto p", Produto.class);
         return tp.getResultList();
-    }   
+    }
+    
+    public static List<Categoria> getAllCategories() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JpaDB-classesPU");
+        EntityManager em = emf.createEntityManager();
+        Query tp = em.createNamedQuery("Categoria.findAll");
+        return tp.getResultList();
+    }
     
 }
