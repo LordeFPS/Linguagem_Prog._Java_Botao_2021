@@ -116,7 +116,16 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "jpadb.classes.Produto[ idproduto=" + idproduto + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Produto{idproduto=").append(idproduto);
+        sb.append(", nome=").append(nome);
+        sb.append(", preco=").append(preco);
+        sb.append(", itensCollection=").append(itensCollection);
+        sb.append(", idcategoria=").append(idcategoria);
+        sb.append('}');
+        return sb.toString();
     }
+
+    
     
 }

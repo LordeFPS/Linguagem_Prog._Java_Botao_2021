@@ -15,7 +15,9 @@ public class JpaDBClasses {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        for(Produto p : DAO.getAllProdutos()){
+           System.out.println(p.toString());
+       }
     }
     
 }
