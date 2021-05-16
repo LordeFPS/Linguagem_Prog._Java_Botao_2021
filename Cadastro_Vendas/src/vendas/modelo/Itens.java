@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.ConexaoDB;
 
 /**
@@ -64,6 +66,31 @@ public class Itens implements DaoInterface{
 
     public void setIdvenda(int idvenda) {
         this.idvenda = idvenda;
+    }
+    
+    public static ResultSet getItensByVenda(String id){
+        ResultSet rs = null;
+        
+        try {
+            //conectar ao banco
+            Connection con = ConexaoDB.getConexao();
+            //montar sql
+            String sql =  " select p.idproduto idproduto, "
+                        + " p.descricao descricao, "
+                        + " i.qtde quantidade, "
+                        + " i.precoitem precoItem, "
+                        + " (i.precoitem * i.qtde) subtotal "
+                        + " from itens i, produto p "
+                        + " where i.idproduto = p.idproduto"
+                        + " and idvenda = ?";
+            //envia sql para o banco de dados
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, Integer.parseInt(id));
+            rs = stm.executeQuery();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao consultar: " + ex.getMessage());
+        }
+        return rs;
     }
     
     @Override
