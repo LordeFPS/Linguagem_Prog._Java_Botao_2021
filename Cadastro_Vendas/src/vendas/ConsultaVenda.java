@@ -10,7 +10,9 @@ import DAO.DaoProduto;
 import vendas.modelo.Venda;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import vendas.modelo.Itens;
 
 /**
  *
@@ -78,6 +80,11 @@ public class ConsultaVenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableVendaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableVenda);
 
         jLabel2.setText("Itens da venda selecionada:");
@@ -96,6 +103,11 @@ public class ConsultaVenda extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTableItens.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableItensMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableItens);
@@ -169,6 +181,32 @@ public class ConsultaVenda extends javax.swing.JFrame {
         } 
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTableItensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableItensMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableItensMouseClicked
+
+    private void jTableVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableVendaMouseClicked
+        DefaultTableModel dtm = (DefaultTableModel) jTableItens.getModel();
+        dtm.setNumRows(0);
+        try {
+            int linha = jTableVenda.getSelectedRow();
+            String codvenda = jTableVenda.getValueAt(linha, 0).toString();
+            //JOptionPane.showMessageDialog(rootPane, codvenda);
+            ResultSet rs = Itens.getItensByVenda(codvenda);
+            while(rs.next()){
+                dtm.addRow(new Object[]{
+                    rs.getString("idproduto"),
+                    rs.getString("descricao"),
+                    rs.getString("precoItem"),
+                    rs.getString("quantidade"),
+                    rs.getString("subtotal")
+                });
+            }
+        }catch (SQLException ex) {
+            
+        }
+    }//GEN-LAST:event_jTableVendaMouseClicked
 
     /**
      * @param args the command line arguments
