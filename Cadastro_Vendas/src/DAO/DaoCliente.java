@@ -54,4 +54,22 @@ public class DaoCliente{
         
     }
     
+    public ResultSet getAll(String filtro){
+        ResultSet rs = null;
+
+        try {
+            String sql = " select * " 
+                       + " from cliente c"
+                       + " where lower(nome) like lower('%"+ filtro +"%');";
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
+        
+    }
+    
 }

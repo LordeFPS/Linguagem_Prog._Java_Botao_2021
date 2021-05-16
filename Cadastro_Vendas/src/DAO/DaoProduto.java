@@ -33,6 +33,22 @@ public class DaoProduto {
         return rs;
         
     }
+    public ResultSet getAll(String filtro) {
+        ResultSet rs = null;
+
+        try {
+            String sql = " select * from produto p " 
+                       + " where lower(descricao) like lower('%"+ filtro +"%');";
+                         
+            Connection con = ConexaoDB.getConexao();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+            //
+        } 
+        return rs;
+    }
     
     public static boolean salvar(Produto prod) {
         try {
